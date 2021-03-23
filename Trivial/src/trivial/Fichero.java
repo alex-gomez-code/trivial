@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +18,9 @@ public class Fichero {
     ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
     //Constructores
+    public Fichero() {
+    }
+
     public Fichero(String p) {
         path = p;
         File archivo = new File(p.toString());
@@ -53,16 +57,15 @@ public class Fichero {
             BufferedReader br = new BufferedReader(fr);
             String enunciado = "";
             String na = "";
-            
+
             while ((enunciado = br.readLine()) != null) {
-                    String[] opc = new String[4];
+                String[] opc = new String[4];
                 for (int i = 0; i < opc.length; i++) {
                     opc[i] = br.readLine();
                 }
                 preguntas.add(new Pregunta(enunciado, opc));
-                    
-                
             }
+            Collections.shuffle(preguntas);
             br.close();
             fr.close();
         } catch (FileNotFoundException fnfe) {
@@ -75,8 +78,7 @@ public class Fichero {
 
     public String imprimePreguntas(int num) {
         String pregunta = "";
+        return pregunta = preguntas.get(num).imprimePregunta();
 
-       return pregunta= preguntas.get(num).imprimePregunta();
-    
     }
 }
