@@ -1,5 +1,10 @@
 package trivial;
-
+/**
+ * Esta clase Main nos permite utilizar los métodos de las clases Jugador, Pregunta y Fichero
+ * @author Alejandro Gómez y Jaime Hidalgo
+ * @version 1.0
+ * @since 23/03/2021
+ */
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;

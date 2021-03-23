@@ -1,5 +1,10 @@
 package trivial;
-
+/**
+ * Esta clase contiene los métodos de la clase Fichero
+ * @author Alejandro Gómez y Jaime Hidalgo
+ * @version 1.0
+ * @since 23/03/2021
+ */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,39 +22,92 @@ public class Fichero {
     private File f;
     ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
-    //Constructores
+    /**
+     * Constructor por defecto
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     */
     public Fichero() {
     }
-
+    
+    /**
+     * Constructor
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @param p String del path
+     * @since 23/03/2021
+     */
     public Fichero(String p) {
         path = p;
         File archivo = new File(p.toString());
         f = archivo;
     }
 
-    //Getters y setters
+    /**
+     * Getter path
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @return Retorna el path de nuestro fichero
+     */
     public String getPath() {
         return path;
     }
 
+     /**
+     * Getter File
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @return Retorna el File creado
+     */
     public File getF() {
         return f;
     }
+    
+     /**
+     * Getter ArrayList de Pregunta
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @return Retorna el array de preguntas
+     */
+    public ArrayList<Pregunta> getPregunta() {
+        return preguntas;
+    }
 
+     /**
+     * Setter path
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @param path El nuevo Path
+     */
     public void setPath(String path) {
         this.path = path;
     }
-
+    
+     /**
+     * Setter File
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @param f Nuevo File a setear
+     */
     public void setF(File f) {
         File archivo = new File(path.toString());
         this.f = archivo;
     }
 
-    public ArrayList<Pregunta> getPregunta() {
-        return preguntas;
-    }
-
-    //Métodos
+    /**
+     * Método para crear nuestros objetos preguntas según
+     * el archivo que creamos a través del path
+     * @author Alejandro Gómez y Jaime Hidalgo
+     * @version 1.0
+     * @since 23/03/2021
+     * @return Retorna un array de preguntas randomizado
+     */
     public ArrayList<Pregunta> cargarPreguntas() {
         boolean flag = true;
         try {
