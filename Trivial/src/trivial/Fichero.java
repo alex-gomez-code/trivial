@@ -13,9 +13,13 @@ public class Fichero {
     //Atributos
     private String path;
     private File f;
+    ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
     //Constructores
-    public Fichero() {
+    public Fichero( String p) {
+        path=p;
+        File archivo = new File(p.toString());
+        f=archivo;
     }
 
     //Getters y setters
@@ -32,24 +36,32 @@ public class Fichero {
     }
 
     public void setF(File f) {
-        this.f = f;
+        File archivo = new File(path.toString());
+        this.f = archivo;
+    }
+    
+    public ArrayList<Pregunta> getPregunta() {
+        return preguntas;
     }
     
     //Métodos
     public ArrayList<Pregunta> cargarPreguntas(){
-        ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+       boolean flag=true;
         try {
             FileReader fr = new FileReader(this.f);
             BufferedReader br = new BufferedReader(fr);
-            while(br.readLine() != null){
+            while(flag){
                 String enunciado = br.readLine();
-                String opciones[] = new String[3];
-                Pregunta p = new Pregunta();
-                p.setEnunciado(enunciado);
-                for (int i = 0; i < opciones.length; i++) {
-                    opciones[i] = br.readLine();
+                String[] opc=new String[4];
+//                Pregunta p = new Pregunta();
+//                p.setEnunciado(enunciado);
+                for (int i = 0; i < opc.length; i++) {
+                  opc[i] = br.readLine();
                 }
-                preguntas.add(p);
+                preguntas.add(new Pregunta(enunciado,opc));
+               if(br.readLine() == null){
+                   flag=false;
+               }
             }
             br.close();
             fr.close();
@@ -59,5 +71,12 @@ public class Fichero {
             System.out.println("Error File: " + ex.getMessage());
         }
         return preguntas;
+    }
+    
+    public String imprimePreguntas(){
+        String pregunta="";
+        pregunta= preguntas.get(0).imprimePregunta();
+       
+        return pregunta;
     }
 }
