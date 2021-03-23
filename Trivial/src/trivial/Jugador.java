@@ -6,9 +6,8 @@ public class Jugador {
     private int puntos;
 
     //Constructores
-    public Jugador(String nombre, int puntos) {
+    public Jugador(String nombre) {
         this.nombre = nombre;
-        this.puntos = puntos;
     }
 
     //Getters y setters

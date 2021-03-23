@@ -45,23 +45,27 @@ public class Pregunta {
     
     //Métodos
     public String imprimePregunta(){
+       
          ArrayList<String>  mylist = new ArrayList<String>(); 
          for(int i=0; i<opciones.length;i++){
              mylist.add(opciones[i]);
          }
-         System.out.println(mylist.size());
          Collections.shuffle(mylist);
          
-//        List<String> preguntas = Arrays.asList(this.opciones);
-//        System.out.println("imprime pregunta 2");
-//        Collections.shuffle(mylist);
-//        String pregunta = "\n";
+         if(opciones[0]==mylist.get(0)){
+             correcta='A';
+         }else if(opciones[0]==mylist.get(1)){
+             correcta='B';
+         }else if(opciones[0]==mylist.get(2)){
+             correcta='C';
+         }else if(opciones[0]==mylist.get(3)){
+             correcta='D';
+         }
+         System.out.println(correcta);
       
-       String pregunta = enunciado + "\n"
-                + "A: " + mylist.get(0) + "\n"
-                + "B: " + mylist.get(1) + "\n"
-                + "C: " + mylist.get(2) + "\n"
-                + "D: " + mylist.get(3) + "\n";
+       String pregunta = enunciado + "\n" + "A: " + mylist.get(0) + "\n"+ "B: " + mylist.get(1) + "\n"
+                + "C: " + mylist.get(2) + "\n" + "D: " + mylist.get(3);
         return pregunta;
+        
     }
 }
